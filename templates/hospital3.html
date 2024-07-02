@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: "Kode Mono", monospace;
+
+        }
+
+        nav {
+            width: 100%;
+            height: 20%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+        }
+
+        #logo {
+
+            height: 100%;
+            aspect-ratio: 1/1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            
+        }
+
+        .logocontainer {
+            height: 80%;
+            aspect-ratio: 1/1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            
+        }
+
+        .logocontainer img {
+            height: 100%;
+            aspect-ratio: 1/1;
+            object-fit: contain;
+            animation: animate 2s ease-in-out;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes animate {
+            0% {
+                transform: rotateY(0deg);
+            }
+
+            25% {
+                transform: rotateY(90deg);
+            }
+
+            50% {
+                transform: rotateY(180deg);
+            }
+
+            75% {
+                transform: rotateY(270deg);
+            }
+
+            100% {
+                transform: rotateY(360deg);
+            }
+
+        }
+
+        .details{
+            height: 65%;
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            background-color: rgb(168, 243, 243);
+            border-radius: 10%;
+            font-size: 6vw;
+            text-align: center;
+        }
+        .details p{
+            margin: 1% 1%;
+        }
+    </style>
+     <style>
+        .submit {
+            background-color: #f53838;
+            background-image: linear-gradient(#995151, #fa0909);
+            border: 1px solid #2A8387;
+            border-radius: 4px;
+            box-shadow: rgba(0, 0, 0, 0.12) 0 1px 1px;
+            color: #FFFFFF;
+            cursor: pointer;
+            display: block;
+            font-family: -apple-system, ".SFNSDisplay-Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 17px;
+            line-height: 100%;
+            margin: 0;
+            outline: 0;
+            padding: 11px 15px 12px;
+            text-align: center;
+            transition: box-shadow .05s ease-in-out, opacity .05s ease-in-out;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            width: 100%;
+        }
+
+        .submit:hover {
+            box-shadow: rgba(255, 255, 255, 0.3) 0 0 2px inset, rgba(0, 0, 0, 0.4) 0 1px 2px;
+            text-decoration: none;
+            transition-duration: .15s, .15s;
+        }
+
+        .submit:active {
+            box-shadow: rgba(0, 0, 0, 0.15) 0 2px 4px inset, rgba(0, 0, 0, 0.4) 0 1px 1px;
+        }
+
+        .submit:disabled {
+            cursor: not-allowed;
+            opacity: .6;
+        }
+
+        .submit:disabled:active {
+            pointer-events: none;
+        }
+
+        .submit:disabled:hover {
+            box-shadow: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    <nav>
+        <div id="logo">
+            <div class="logocontainer" onclick="nextpage()">
+                <img src="/static/images/logo.png" alt="">
+            </div>
+            <span>
+                <p style="font-size: 6vw;">EmergiSync</p>
+            </span>
+        </div>
+    </nav>
+    <div class = "details">
+        {% for row in data%}
+        <div style="height: 20%;aspect-ratio: 1/1;overflow: hidden;border-radius: 20px;">
+            <img style="height: 100%;aspect-ratio: 1/1;object-fit: cover;" src="{{row.logo}}" alt="">
+        </div>
+        <p>HopitalName :- {{row.HospitalName}} Hopitals</p>
+        <p>HospitalId :- {{row.Hospitalid}}</p>
+        <p>Address :- {{row.Address}}</p>
+        <button onclick="nextpage()" style="width: 50%;font-family: 'Kode Mono', monospace ;" class="submit">Emergency </button>
+        {% endfor %}
+    </div>
+    <script>
+        function nextpage(){
+            window.location.href = "hospital4"
+        }
+    </script>
+
+</body>
+
+</html>

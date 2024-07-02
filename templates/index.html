@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            background-color: black;
+            font-family: "Kode Mono", monospace;
+        }
+
+        nav {
+            width: 98%;
+            height: 10%;
+            background-color: aliceblue;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+
+
+        }
+
+        .imagecontainer {
+            height: 90%;
+            aspect-ratio: 1/1;
+            animation: animate 2s ease-in-out;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes animate {
+            0% {
+                transform: rotateY(0deg);
+            }
+
+            25% {
+                transform: rotateY(90deg);
+            }
+
+            50% {
+                transform: rotateY(180deg);
+            }
+
+            75% {
+                transform: rotateY(270deg);
+            }
+
+            100% {
+                transform: rotateY(360deg);
+            }
+
+        }
+
+        .imagecontainer img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        #functions {
+            width: 30%;
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+
+        #logo {
+            width: 10%;
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        #conatctus {
+            width: 20%;
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .mainscreen {
+            width: 98%;
+            height: 60%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 2%;
+        }
+
+        #Description {
+            width: 50%;
+            height: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            flex-direction: column;
+            color: aliceblue;
+        
+
+        }
+    </style>
+    <style>
+        .loginbutton {
+            align-items: center;
+            appearance: none;
+            background-color: #FCFCFD;
+            border-radius: 4px;
+            border-width: 0;
+            box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+            box-sizing: border-box;
+            color: #36395A;
+            cursor: pointer;
+            display: inline-flex;
+            font-family: "JetBrains Mono", monospace;
+            height: 48px;
+            justify-content: center;
+            line-height: 1;
+            list-style: none;
+            overflow: hidden;
+            padding-left: 16px;
+            padding-right: 16px;
+            position: relative;
+            text-align: left;
+            text-decoration: none;
+            transition: box-shadow .15s, transform .15s;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            white-space: nowrap;
+            will-change: box-shadow, transform;
+            font-size: 18px;
+        }
+
+        .loginbutton:focus {
+            box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+        }
+
+        .loginbutton:hover {
+            box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+            transform: translateY(-2px);
+        }
+
+        .loginbutton:active {
+            box-shadow: #D6D6E7 0 3px 7px inset;
+            transform: translateY(2px);
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div id="logo">
+            <div class="imagecontainer">
+                <img src="/static/images/logo.png" alt="">
+            </div>
+            <h4>EMERGISYNC</h4>
+        </div>
+
+        <div id="functions">
+            <h3><a href="led">LED</a></h3>
+            <h3>Signals</h3>
+            <h3><a href="ambulance">Ambulances</a></h3>
+        </div>
+        <div id="conatctus">
+            <h3>Home</h3>
+            <h3>About</h3>
+            <h3>Contactus</h3>
+        </div>
+
+    </nav>
+    <div class="mainscreen">
+        <div style="width: 50%;height:100%;display: flex;justify-content: center;align-items: center;">
+            <video autoplay loop muted src="/static/videos/intro.mp4"
+                style="width: 100%; height: 100%; object-fit: cover;"></video>
+
+        </div>
+        <div id="Description">
+            <h2>Welcome to EMERGISYNC:</h2>
+            <h3> Where Every Moment Matters</h3>
+            <h4>At Ambulink, we understand the critical importance of timely and efficient emergency response. Our
+                mission is simple: to bridge the gap between emergencies and care, ensuring that every moment counts in
+                saving lives. With cutting-edge technology and a dedicated team, we strive to provide seamless
+                coordination between ambulances, hospitals, and emergency services, bringing swift relief to those in
+                need.</h4>
+            <!-- HTML !-->
+            <button class="loginbutton" role="button">Authorities Login</button>
+
+
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

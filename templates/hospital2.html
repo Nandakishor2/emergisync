@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-family: "Kode Mono", monospace;
+
+        }
+
+        .loginform {
+            width: 75%;
+            height: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        #logo {
+            width: 98%;
+            height: 20%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        #logocontainer {
+            height: 80%;
+            aspect-ratio: 1/1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        #logocontainer img {
+            height: 100%;
+            aspect-ratio: 1/1;
+            object-fit: contain;
+        }
+
+        p {
+            font-size: 6vw;
+        }
+
+
+
+        .input-field {
+            position: relative;
+            width: 98%;
+            height: 15%;
+            line-height: 10vh;
+        }
+
+        label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            color: #d3d3d3;
+            transition: 0.2s all;
+            cursor: text;
+        }
+
+        input {
+            width: 100%;
+            border: 0;
+            outline: 0;
+            padding: 0.5rem 0;
+            border-bottom: 2px solid #d3d3d3;
+            box-shadow: none;
+            color: #111;
+        }
+
+        input:focus,
+        input:valid {
+            border-color: #00dd22;
+        }
+
+        input:focus~label,
+        input:valid~label {
+            font-size: 14px;
+            top: -24px;
+            color: #00dd22;
+        }
+
+        #inputs {
+            width: 100%;
+            height: 80%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+    </style>
+    <style>
+        .submit {
+            background-color: #36A9AE;
+            background-image: linear-gradient(#37ADB2, #329CA0);
+            border: 1px solid #2A8387;
+            border-radius: 4px;
+            box-shadow: rgba(0, 0, 0, 0.12) 0 1px 1px;
+            color: #FFFFFF;
+            cursor: pointer;
+            display: block;
+            font-family: -apple-system, ".SFNSDisplay-Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 17px;
+            line-height: 100%;
+            margin: 0;
+            outline: 0;
+            padding: 11px 15px 12px;
+            text-align: center;
+            transition: box-shadow .05s ease-in-out, opacity .05s ease-in-out;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            width: 100%;
+        }
+
+        .submit:hover {
+            box-shadow: rgba(255, 255, 255, 0.3) 0 0 2px inset, rgba(0, 0, 0, 0.4) 0 1px 2px;
+            text-decoration: none;
+            transition-duration: .15s, .15s;
+        }
+
+        .submit:active {
+            box-shadow: rgba(0, 0, 0, 0.15) 0 2px 4px inset, rgba(0, 0, 0, 0.4) 0 1px 1px;
+        }
+
+        .submit:disabled {
+            cursor: not-allowed;
+            opacity: .6;
+        }
+
+        .submit:disabled:active {
+            pointer-events: none;
+        }
+
+        .submit:disabled:hover {
+            box-shadow: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login_form">
+        <div id="logo">
+            <div id="logocontainer" onclick="nextpage()">
+                <img src="/static/images/logo.png" alt="">
+            </div>
+            <span>
+                <p>EmergiSync</p>
+            </span>
+        </div>
+        <form id="inputs" method = "post">
+            <div class="input-field">
+                <input type="text" name="hospitalid" id="hospitalid" required />
+                <label for="hospitalid">Hospital ID</label>
+            </div>
+            <div class="input-field">
+                <input type="password" name="password" id="password" required />
+                <label for="password">Password</label>
+            </div>
+
+
+            <button class="submit" type="submit" role="button">Submit</button>
+        </form>
+        <!-- HTML !-->
+        
+    </div>
+
+
+</body>
+
+</html>

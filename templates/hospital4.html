@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap" rel="stylesheet">
+    <title>Drivers_data</title>
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            overflow: hidden;
+            margin: 0% 0%;
+            padding: 0% 0%;
+            font-family: "Kode Mono", monospace;
+            color: aliceblue;
+        }
+
+        .card {
+            padding: 2% 2%;
+            width: 100%;
+            height: 35%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            overflow: hidden;
+            background: #536976;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #292E49, #536976);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #292E49, #536976);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            margin: 2% 2%;
+            border-radius: 20px;
+
+        }
+
+        .card :hover {
+            scale: 1.2;
+        }
+
+        .animaecontainer {
+            width: 50%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+
+        .data {
+            width: 50%;
+            height: 100%;
+            justify-content: space-around;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .data p {
+            margin: 1% 1%;
+
+        }
+    </style>
+</head>
+
+<body id="body">
+    {{ Listdata | json_script:"displaydata" }}
+
+
+</body>
+<script>
+    let data = JSON.parse(document.getElementById("displaydata").textContent)
+    // console.log(data[0].Username)
+    function loaddata() {
+        document.getElementById("body").innerHTML = ""
+        data.forEach(element => {
+            document.getElementById("body").innerHTML += `<div class="card">
+        <div class="animaecontainer">
+            <video autoplay loop muted src="/static/videos/ambulance.mp4"
+                style="width: 100%; height: 100%; object-fit: cover;"></video>
+            
+        </div>
+        <div class="data">
+            
+                <p>Driver :-${element.Username}</p>
+                <p>Ambulance Id :-${element.Ambulanceid}</p>
+                <p>Hospital :-${element.Hospital}</p>
+                <p>Driver is heading towards you at  ${element.Distance.slice(0, 5)} from You. Make sure to make necessary arrangements</p>
+        
+            </div>
+    </div>`
+
+
+        });
+
+    }
+    let websocket = new WebSocket("ws://192.168.20.194:8000/ws/hospital/HOSP1080")
+    websocket.onopen = function (e) {
+        loaddata()
+
+    }
+    websocket.onmessage = function (e) {
+        let jsondata = JSON.parse(e.data)
+        let jsondata2 = JSON.parse( jsondata.Data)
+        let existingdata = data.find(driver => driver.Username = jsondata2.Username)
+        if (existingdata){
+            Object.assign(existingdata,jsondata2)
+            loaddata()
+        }
+        else{
+            data.push(jsondata2)
+            loaddata()
+        }
+    }
+
+</script>
+
+</html>
